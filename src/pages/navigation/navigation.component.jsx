@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../assets/logo.svg";
+import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./navigation.styles.scss";
 import { useUserContext } from "../../context/user-context";
 import { signOutUser } from "../../firebase/firebase";
