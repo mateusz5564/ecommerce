@@ -2,11 +2,15 @@ import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./navigation.styles.scss";
-import { useUserContext } from "../../context/user-context";
+import { useUserContext } from "../../context/user.context";
 import { signOutUser } from "../../firebase/firebase";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+import { useCartContext } from "../../context/cart.context";
 
 const Navigation = () => {
   const { user, setUser } = useUserContext();
+  const { isCartOpen } = useCartContext();
 
   const handleSingOut = e => {
     signOutUser();
@@ -43,7 +47,8 @@ const Navigation = () => {
             )}
           </li>
         </ul>
-        <div>cart</div>
+        <CartIcon />
+        {isCartOpen && <CartDropdown />}
       </nav>
       {<Outlet />}
     </>
