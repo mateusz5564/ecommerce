@@ -1,12 +1,18 @@
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../assets/crown.svg";
-import "./navigation.styles.scss";
+import "./navigation.styles.jsx";
 import { useUserContext } from "../../context/user.context";
 import { signOutUser } from "../../firebase/firebase";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 import { useCartContext } from "../../context/cart.context";
+import {
+  Nav,
+  LogoContainer,
+  Logo,
+  NavLinks,
+  NavLinkItem,
+} from "./navigation.styles.jsx";
 
 const Navigation = () => {
   const { user, setUser } = useUserContext();
@@ -19,37 +25,31 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className="nav-container">
-        <Link className="logo-container" to="/">
-          <Logo className="logo" />
-        </Link>
+      <Nav>
+        <LogoContainer to="/">
+          <Logo />
+        </LogoContainer>
         {user && user.email}
-        <ul className="nav-links-container">
-          <li className="nav-link-item">
-            <Link className="link" to="shop">
-              Shop
-            </Link>
-          </li>
-          <li className="nav-link-item">
-            <Link className="link" to="contact">
-              Contact
-            </Link>
-          </li>
-          <li className="nav-link-item">
+        <NavLinks>
+          <NavLinkItem>
+            <Link to="shop">Shop</Link>
+          </NavLinkItem>
+          <NavLinkItem>
+            <Link to="contact">Contact</Link>
+          </NavLinkItem>
+          <NavLinkItem>
             {user ? (
-              <span className="link" onClick={handleSingOut}>
+              <span onClick={handleSingOut}>
                 Sign Out
               </span>
             ) : (
-              <Link className="link" to="auth">
-                Sign In
-              </Link>
+              <Link to="auth">Sign In</Link>
             )}
-          </li>
-        </ul>
+          </NavLinkItem>
+        </NavLinks>
         <CartIcon />
         {isCartOpen && <CartDropdown />}
-      </nav>
+      </Nav>
       {<Outlet />}
     </>
   );
