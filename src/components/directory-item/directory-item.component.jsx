@@ -1,9 +1,9 @@
 import "./directory-item.styles.jsx";
 import { BackgroundImage, Body, DirectoryItemContainer } from "./directory-item.styles.jsx";
 
-const DirectoryItem = ({ category: { title, imageUrl } }) => {
+const DirectoryItem = ({ category: { title, imageUrl }, onClick }) => {
   return (
-    <DirectoryItemContainer>
+    <DirectoryItemContainer onClick={onClick}>
       <BackgroundImage imageUrl={imageUrl} />
       <Body>
         <h2>{title}</h2>
