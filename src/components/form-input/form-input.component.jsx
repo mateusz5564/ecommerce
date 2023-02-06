@@ -1,20 +1,16 @@
-import "./form-input.styles.scss";
+import { FormInputLabel, Group, StyledFormInput } from "./form-input.styles";
 
 const FormInput = ({ id, label, type, value, onChange }) => {
   return (
-    <div className="group">
-      <input
-        className="form-input"
-        id={id}
-        required
-        type={type}
-        onChange={onChange}
-        value={value}
-      />
-      <label className={`${value.length > 0 ? "shrink" : ""} form-input-label`} htmlFor={id}>
+    <Group>
+      <StyledFormInput id={id} required type={type} onChange={onChange} value={value} />
+      <FormInputLabel
+        hasValue={value.length > 0}
+        htmlFor={id}
+      >
         {label}
-      </label>
-    </div>
+      </FormInputLabel>
+    </Group>
   );
 };
 
