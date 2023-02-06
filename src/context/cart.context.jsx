@@ -38,8 +38,7 @@ const removeCartItem = (cartItems, productToRemove) => {
     return cartItemsCopy;
   }
 
-  if (itemIndex) {
-    cartItemsCopy.push({ ...productToRemove, quantity: 1 });
+  if (itemIndex === 0) {
     return cartItems.filter(item => item.id !== productToRemove.id);
   }
 };
