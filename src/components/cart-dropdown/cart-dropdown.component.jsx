@@ -11,12 +11,11 @@ const CartDropdown = () => {
   return (
     <CartDropdownContainer>
       <CartItems>
-        {cartItems.length < 1 && (
+        {cartItems.length < 1 ? (
           <EmptyMessage className="empty-message">Your cart is empty</EmptyMessage>
+        ) : (
+          cartItems.map(item => <CartItem key={item.id} product={item} />)
         )}
-        {cartItems.map(item => (
-          <CartItem key={item.id} product={item} />
-        ))}
       </CartItems>
       <Button onClick={() => navigate("checkout")}>Go To Checkout</Button>
     </CartDropdownContainer>
