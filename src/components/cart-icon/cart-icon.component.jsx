@@ -3,10 +3,10 @@ import "./cart-icon.styles.jsx";
 import { CartIconContainer, ItemCount, StyledIcon } from "./cart-icon.styles.jsx";
 
 const CartIcon = () => {
-  const { cartCount, setIsCartOpen } = useCartContext();
+  const { cartCount, toggleCart } = useCartContext();
 
   return (
-    <CartIconContainer onClick={() => setIsCartOpen(prevState => !prevState)}>
+    <CartIconContainer onClick={() => toggleCart()}>
       <StyledIcon />
       <ItemCount>{cartCount}</ItemCount>
     </CartIconContainer>
