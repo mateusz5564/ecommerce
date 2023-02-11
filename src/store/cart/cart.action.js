@@ -1,7 +1,7 @@
-import { ACTION_TYPES } from "./cart.types";
+import { CART_ACTION_TYPES } from "./cart.types";
 
 const updateCartItems = cartItems => ({
-  type: ACTION_TYPES.SET_CART_ITEMS,
+  type: CART_ACTION_TYPES.SET_CART_ITEMS,
   payload: { cartItems },
 });
 
@@ -33,7 +33,7 @@ const clearCartItem = (cartItems, product) => {
   return cartItems.filter(item => item.id !== product.id);
 };
 
-export const toggleCart = () => ({ type: ACTION_TYPES.TOGGLE_CART });
+export const toggleCart = () => ({ type: CART_ACTION_TYPES.TOGGLE_CART });
 
 export const addItemToCart = (cartItems, product) => {
   const newCartItems = addCartItem(cartItems, product);
